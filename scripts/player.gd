@@ -1,4 +1,4 @@
-extends RigidBody2D
+class_name Player extends RigidBody2D
 
 
 const FORCE_SCALE = 500.0
@@ -11,9 +11,14 @@ var reset = false
 var stuck = false
 var can_launch = false
 
+@export var disabled = false
+
 @onready var main = $".."
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	if disabled:
+		return
+	
 	if reset:
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
@@ -46,6 +51,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	var level = main.get_node("Level")
 	position = level.get_node("StartPos").position
+	$Camera2D.reset_smoothing()
 	reset = true
 	level.reset()
 

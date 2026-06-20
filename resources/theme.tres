@@ -1,0 +1,41 @@
+[gd_resource type="Theme" format=3 uid="uid://6tfp3qedvyy7"]
+
+[ext_resource type="FontFile" uid="uid://coj0qumdr3v1u" path="res://assets/Chonkly.otf" id="1_d4nwg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lco5i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3il48"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d4nwg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.13725491, 0.1254902, 0.20392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ct1h"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.13725491, 0.1254902, 0.20392157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_886mr"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 1.0
+bg_color = Color(0.13725491, 0.1254902, 0.20392157, 1)
+
+[resource]
+default_font = ExtResource("1_d4nwg")
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(0.36078432, 0.43137255, 0.88235295, 1)
+Button/colors/font_hover_color = Color(0.36078432, 0.43137255, 0.88235295, 1)
+Button/colors/font_hover_pressed_color = Color(0.36078432, 0.43137255, 0.88235295, 1)
+Button/colors/font_pressed_color = Color(0.36078432, 0.43137255, 0.88235295, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_lco5i")
+Button/styles/focus = SubResource("StyleBoxEmpty_3il48")
+Button/styles/hover = SubResource("StyleBoxFlat_d4nwg")
+Button/styles/normal = SubResource("StyleBoxFlat_7ct1h")
+Button/styles/pressed = SubResource("StyleBoxFlat_886mr")

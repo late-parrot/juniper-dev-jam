@@ -1,0 +1,54 @@
+[gd_scene format=4 uid="uid://cevuivpw1a3mv"]
+
+[ext_resource type="Script" uid="uid://ddy7curvtm44c" path="res://scripts/level.gd" id="1_jplvn"]
+[ext_resource type="TileSet" uid="uid://c7q7s2k0k865h" path="res://resources/tileset.tres" id="2_jplvn"]
+[ext_resource type="PackedScene" uid="uid://bf0et7rsoan41" path="res://scenes/player.tscn" id="3_lco5i"]
+[ext_resource type="Shader" uid="uid://du6u0065o0smw" path="res://resources/pixelate.gdshader" id="4_6apd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fa6xv"]
+shader = ExtResource("4_6apd1")
+shader_parameter/amount = 1.0
+shader_parameter/max_pixel_size = 2
+
+[node name="UIEmbed" type="Node2D" unique_id=1368573361]
+
+[node name="Level" type="Node2D" parent="." unique_id=2055604371]
+script = ExtResource("1_jplvn")
+metadata/_custom_type_script = "uid://ddy7curvtm44c"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Level" unique_id=1129384814]
+unique_name_in_owner = true
+tile_map_data = PackedByteArray("AAD//wMAAAAAAAAAAAD//wIAAAAFAAAAAAD//wEAAAAFAAAAAAD//wAAAAAFAAAAAAD/////AAAFAAAAAAD///7/AAAFAAAAAAD///3/AAAFAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAD+//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//v/AAAAAAAAAAD7//v/AAAAAAAAAAD7//z/AAAAAAAAAAD7//3/AAAAAAAAAAD7//7/AAAAAAAAAAD7////AAAAAAAAAAD7/wAAAAAAAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAAAAAAAAAD7/wMAAAAAAAAAAAD7/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD8/wMAAAAFAAAAAAD8/wIAAAADAAIAAAD8/wEAAAADAAIAAAD8/wAAAAAAAAAAAAD8////AAAAAAAAAAD8//7/AAAFAAAAAAD8//3/AAAFAAAAAAD8//z/AAAFAAAAAAD9//z/AAAFAAAAAAD9//3/AAAFAAAAAAD9//7/AAAFAAAAAAD9////AAAFAAAAAAD9/wAAAAAFAAAAAAD9/wEAAAAFAAAAAAD9/wIAAAAFAAAAAAD9/wMAAAAAAAIAAAD9/wQAAAAAAAAAAAD+/wQAAAAAAAAAAAD+/wMAAAAAAAIAAAD+/wIAAAAFAAAAAAD+/wEAAAAFAAAAAAD+/wAAAAAFAAAAAAD+////AAAFAAAAAAD+//7/AAAFAAAAAAD+//3/AAAFAAAAAAD+//z/AAAFAAAAAAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAIAAAAFAAAAAAAAAAEAAAAFAAAAAAAAAAAAAAAFAAAAAAAAAP//AAAFAAAAAAAAAP7/AAAFAAAAAAAAAP3/AAAFAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAABAPz/AAACAAIAAAABAP3/AAAFAAAAAAABAP7/AAAFAAAAAAABAP//AAAFAAAAAAABAAAAAAAFAAAAAAABAAEAAAAFAAAAAAABAAIAAAAFAAAAAAABAAMAAAAFAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAACAAMAAAAFAAAAAAACAAIAAAAFAAAAAAACAAEAAAAFAAAAAAACAAAAAAAFAAAAAAACAP//AAAFAAAAAAACAP7/AAAFAAAAAAACAP3/AAAFAAAAAAACAPz/AAACAAIAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAADAPz/AAAEAAEAAAADAP3/AAABAAIAAAADAP7/AAABAAIAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAFAAAAAAADAAIAAAAFAAAAAAADAAMAAAAFAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAA=")
+tile_set = ExtResource("2_jplvn")
+
+[node name="Player" parent="." unique_id=1071050235 instance=ExtResource("3_lco5i")]
+unique_name_in_owner = true
+disabled = true
+
+[node name="Background" type="ColorRect" parent="." unique_id=1212918532]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -272.0
+offset_right = 360.0
+offset_bottom = 368.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13333334, 0.1254902, 0.20392157, 1)
+
+[node name="Pixelate" type="ColorRect" parent="." unique_id=1133039962]
+material = SubResource("ShaderMaterial_fa6xv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -272.0
+offset_right = 360.0
+offset_bottom = 368.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=31550843]
