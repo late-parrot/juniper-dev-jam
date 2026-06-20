@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Junpier Dev Jam"
+config/name="A New Down"
 run/main_scene="uid://dgxryfvc3sy7t"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
