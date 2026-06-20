@@ -50,7 +50,9 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	level.reset()
 
 func _on_goal_box_body_entered(_body: Node2D) -> void:
-	pass # next level
+	await get_tree().create_timer(0.5).timeout
+	if not %GoalBox.get_overlapping_bodies().is_empty():
+		main.next_level()
 
 func cell_distance(cell) -> float:
 	var map = main.get_node("Level/TileMapLayer")

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dgxryfvc3sy7t"]
 
+[ext_resource type="Script" uid="uid://c1lumdc53fbfb" path="res://scripts/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bf0et7rsoan41" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="Shader" uid="uid://du6u0065o0smw" path="res://resources/pixelate.gdshader" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c52jgbunt8lm7" path="res://scenes/levels/0.tscn" id="2_0wfyh"]
@@ -10,10 +11,12 @@ shader_parameter/amount = 1.0
 shader_parameter/max_pixel_size = 2
 
 [node name="Main" type="Node2D" unique_id=973891256]
+script = ExtResource("1_jyhfs")
 
 [node name="Level" parent="." unique_id=2033992173 instance=ExtResource("2_0wfyh")]
 
 [node name="Player" parent="." unique_id=1155736614 instance=ExtResource("1_o5qli")]
+unique_name_in_owner = true
 position = Vector2(40, 48)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=851970139]
