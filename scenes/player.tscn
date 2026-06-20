@@ -18,9 +18,9 @@ height = 16.0
 radius = 8.0
 
 [node name="Player" type="RigidBody2D" unique_id=1071050235]
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_3vyb7")
 gravity_scale = 0.5
-can_sleep = false
 contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_3vyb7")
@@ -33,5 +33,35 @@ texture = SubResource("PlaceholderTexture2D_ccjeu")
 modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
 mesh = SubResource("SphereMesh_ccjeu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1927879474]
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=1927879474]
 shape = SubResource("CircleShape2D_ccjeu")
+
+[node name="Collisions" type="Node2D" parent="." unique_id=967755799]
+
+[node name="HurtBox" type="Area2D" parent="Collisions" unique_id=1680284401]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="Collisions/HurtBox" unique_id=135415841]
+shape = SubResource("CircleShape2D_ccjeu")
+
+[node name="GoalBox" type="Area2D" parent="Collisions" unique_id=1982312156]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 8
+
+[node name="Collision" type="CollisionShape2D" parent="Collisions/GoalBox" unique_id=1677196804]
+shape = SubResource("CircleShape2D_ccjeu")
+
+[node name="StickyBox" type="Area2D" parent="Collisions" unique_id=875833900]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 16
+
+[node name="Collision" type="CollisionShape2D" parent="Collisions/StickyBox" unique_id=1320232928]
+shape = SubResource("CircleShape2D_ccjeu")
+
+[connection signal="body_entered" from="Collisions/HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="body_entered" from="Collisions/GoalBox" to="." method="_on_goal_box_body_entered"]
+[connection signal="body_entered" from="Collisions/StickyBox" to="." method="_on_sticky_box_body_entered"]

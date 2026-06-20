@@ -11,7 +11,7 @@ shader_parameter/max_pixel_size = 2
 
 [node name="Main" type="Node2D" unique_id=973891256]
 
-[node name="Level0" parent="." unique_id=2033992173 instance=ExtResource("2_0wfyh")]
+[node name="Level" parent="." unique_id=2033992173 instance=ExtResource("2_0wfyh")]
 
 [node name="Player" parent="." unique_id=1155736614 instance=ExtResource("1_o5qli")]
 position = Vector2(40, 48)
