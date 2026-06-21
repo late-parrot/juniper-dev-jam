@@ -4,7 +4,7 @@ class_name Player extends RigidBody2D
 const FORCE_SCALE = 500.0
 const JUMP_FORCE = 200.0
 const LAUNCH_FORCE = 500.0
-const FLOOR_THRESHOLD = 0.8
+const FLOOR_THRESHOLD = 0.5
 
 var on_floor = false
 var reset = false
@@ -76,5 +76,5 @@ func _on_sticky_box_body_entered(_body: Node2D) -> void:
 	snap_to_sticky()
 	stuck = true
 	can_launch = false
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(0.2).timeout
 	can_launch = true
