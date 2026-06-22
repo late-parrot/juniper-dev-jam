@@ -25,13 +25,15 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		reset = false
 	if stuck:
 		sleeping = true
+		%Arrow.visible = true
 		snap_to_sticky()
 		var launch_direction = Input.get_vector("left", "right", "up", "down").normalized()
-		if launch_direction != Vector2.ZERO and can_launch:
-			state.apply_impulse(launch_direction*LAUNCH_FORCE)
-			#linear_velocity = launch_direction*LAUNCH_FORCE
-			#linear_velocity.y = -JUMP_FORCE
-			stuck = false
+		if launch_direction != Vector2.ZERO:
+			%Arrow.rotation = lerp_angle(%Arrow.rotation, launch_direction.angle()-rotation, 0.5)
+			if can_launch and Input.is_action_just_pressed("launch"):
+				state.apply_impulse(launch_direction*LAUNCH_FORCE)
+				%Arrow.visible = false
+				stuck = false
 		return
 	
 	on_floor = false

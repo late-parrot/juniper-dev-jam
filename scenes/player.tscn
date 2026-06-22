@@ -7,8 +7,11 @@ rough = true
 bounce = 1.0
 absorbent = true
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ccjeu"]
-size = Vector2(16, 16)
+[sub_resource type="PrismMesh" id="PrismMesh_6ntme"]
+size = Vector3(12, 8, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ccjeu"]
+size = Vector2(4, 24)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ccjeu"]
 radius = 8.0
@@ -25,9 +28,20 @@ contact_monitor = true
 max_contacts_reported = 8
 script = ExtResource("1_3vyb7")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=297772760]
+[node name="Arrow" type="Node2D" parent="." unique_id=1235766083]
+unique_name_in_owner = true
 visible = false
-texture = SubResource("PlaceholderTexture2D_ccjeu")
+modulate = Color(0.7058824, 0.93333334, 0.6039216, 1)
+
+[node name="Triangle" type="MeshInstance2D" parent="Arrow" unique_id=756730689]
+position = Vector2(24, 0)
+rotation = -1.5707964
+mesh = SubResource("PrismMesh_6ntme")
+
+[node name="Line" type="MeshInstance2D" parent="Arrow" unique_id=1997396200]
+position = Vector2(12, 0)
+rotation = -1.5707964
+mesh = SubResource("QuadMesh_ccjeu")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=249280297]
 modulate = Color(0.13333334, 0.1254902, 0.20392157, 1)
