@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bvuq3yprha5up"]
+
+[ext_resource type="Theme" uid="uid://6tfp3qedvyy7" path="res://resources/theme.tres" id="1_2ckv8"]
+
+[node name="Credits" type="Control" unique_id=1715589169]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2ckv8")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1655574967]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer" unique_id=1069720121]
+layout_mode = 2
+theme_override_constants/margin_top = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer" unique_id=1670708831]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="RichTextLabel" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1662616975]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.91663986, 0.91663986, 0.9166397, 1)
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "All code and art created by Eric Schuette.
+
+The font used is [url=https://arcadiaxdev.itch.io/chonkly-pixel-font]Chonkly[/url] by ItMeArcadia (CC0)"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Back" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer" unique_id=1278346802]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BACK"
