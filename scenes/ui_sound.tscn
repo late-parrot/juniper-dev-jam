@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dm85eai4cb1pj"]
+
+[ext_resource type="Script" uid="uid://s645w687uyaf" path="res://scripts/ui_sound.gd" id="1_ds1ap"]
+[ext_resource type="AudioStream" uid="uid://b5qxdm2p8ojk3" path="res://assets/sfx/sfx_menu_move4.wav" id="2_uxlbg"]
+[ext_resource type="AudioStream" uid="uid://crwcsfgfuh4wa" path="res://assets/sfx/sfx_menu_select2.wav" id="3_es7ss"]
+
+[node name="UISound" type="Node" unique_id=1990835963]
+script = ExtResource("1_ds1ap")
+
+[node name="Move" type="AudioStreamPlayer" parent="." unique_id=697296248]
+unique_name_in_owner = true
+stream = ExtResource("2_uxlbg")
+volume_db = -25.0
+
+[node name="Select" type="AudioStreamPlayer" parent="." unique_id=308691426]
+unique_name_in_owner = true
+stream = ExtResource("3_es7ss")
+volume_db = -25.0

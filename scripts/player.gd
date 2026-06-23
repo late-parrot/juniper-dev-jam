@@ -10,6 +10,9 @@ var on_floor = false
 var reset = false
 var stuck = false
 var can_launch = false
+var jump_sound_cooldown = false
+var old_shapes = []
+var launch_direction = Vector2.ZERO
 
 @export var disabled = false
 
@@ -19,6 +22,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	if disabled:
 		return
 	
+	var d = Input.get_vector("left", "right", "up", "down").normalized()
+	if d != Vector2.ZERO:
+		launch_direction = d
+	%Arrow.rotation = lerp_angle(%Arrow.rotation, launch_direction.angle()-rotation, 0.5)
+	
 	if reset:
 		state.linear_velocity = Vector2.ZERO
 		state.angular_velocity = 0
@@ -27,13 +35,11 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 		sleeping = true
 		%Arrow.visible = true
 		snap_to_sticky()
-		var launch_direction = Input.get_vector("left", "right", "up", "down").normalized()
-		if launch_direction != Vector2.ZERO:
-			%Arrow.rotation = lerp_angle(%Arrow.rotation, launch_direction.angle()-rotation, 0.5)
-			if can_launch and Input.is_action_just_pressed("launch"):
-				state.apply_impulse(launch_direction*LAUNCH_FORCE)
-				%Arrow.visible = false
-				stuck = false
+		if launch_direction != Vector2.ZERO and can_launch and Input.is_action_just_pressed("launch"):
+			state.apply_impulse(launch_direction*LAUNCH_FORCE)
+			%Arrow.visible = false
+			stuck = false
+			%Jump.play()
 		return
 	
 	on_floor = false
@@ -49,6 +55,12 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	
 	if on_floor and Input.is_action_pressed("jump"):
 		linear_velocity.y = -JUMP_FORCE
+		#if not jump_sound_cooldown:
+		%Jump.play()
+			#jump_sound_cooldown = true
+			#await get_tree().create_timer(0.1).timeout
+			#jump_sound_cooldown = false
+		old_shapes.clear()
 
 func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	var level = main.get_node("Level")
@@ -56,6 +68,7 @@ func _on_hurt_box_body_entered(_body: Node2D) -> void:
 	$Camera2D.reset_smoothing()
 	reset = true
 	level.reset()
+	%Death.play()
 
 func _on_goal_box_body_entered(_body: Node2D) -> void:
 	await get_tree().create_timer(0.5).timeout
@@ -80,3 +93,11 @@ func _on_sticky_box_body_entered(_body: Node2D) -> void:
 	can_launch = false
 	await get_tree().create_timer(0.2).timeout
 	can_launch = true
+
+func _on_body_shape_entered(body_rid: RID, _body: Node, body_shape_index: int, _local_shape_index: int) -> void:
+	var shape = {"body_rid": body_rid, "shape_index": body_shape_index}
+	if shape not in old_shapes:
+		%Land.play()
+	old_shapes.append(shape)
+	await get_tree().create_timer(1).timeout
+	old_shapes.erase(shape)
