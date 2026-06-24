@@ -1,3 +1,6 @@
+# Exported files and executables
+export/
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
